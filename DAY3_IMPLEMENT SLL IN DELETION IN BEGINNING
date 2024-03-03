@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* head;
+
+void deleteAtBeginning() {
+    if (head == NULL) {
+        printf("List is empty\n");
+        return;
+    }
+    struct Node* temp = head;
+    head = head->next;
+    free(temp);
+}
+
+void displayList() {
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    head = NULL;
+
+    // Inserting nodes at the beginning
+    for (int i = 5; i > 0; i--) {
+        struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+        newNode->data = i * 10;
+        newNode->next = head;
+        head = newNode;
+    }
+
+    printf("Initial List: ");
+    displayList();
+
+    deleteAtBeginning();
+    printf("List after deletion at the beginning: ");
+    displayList();
+
+    return 0;
+}
