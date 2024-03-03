@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+void findMinAndMax(struct Node* head) {
+    struct Node* current = head;
+    int min = INT_MAX;
+    int max = INT_MIN;
+
+    while (current != NULL) {
+        if (current->data < min) {
+            min = current->data;
+        }
+        if (current->data > max) {
+            max = current->data;
+        }
+        current = current->next;
+    }
+
+    printf("Minimum value: %d\n", min);
+    printf("Maximum value: %d\n");
+}
+
+int main() {
+    struct Node* head = NULL;
+    // Add your linked list elements here
+
+    findMinAndMax(head);
+
+    return 0;
+}
