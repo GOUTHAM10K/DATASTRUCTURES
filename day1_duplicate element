@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+  printf("reg no:192311169 \n");
+    int originalArray[] = {1, 2, 3, 4, 5};
+    int newArray[10];
+    int size = 5;
+    
+    for (int i = 0; i < size; i++) {
+        newArray[i * 2] = originalArray[i];
+        newArray[i * 2 + 1] = originalArray[i];
+    }
+    
+    printf("Original Array: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", originalArray[i]);
+    }
+    
+    printf("\nNew Array with Duplicates: ");
+    for (int i = 0; i < size * 2; i++) {
+        printf("%d ", newArray[i]);
+    }
+    
+    return 0;
+}
