@@ -1,0 +1,14 @@
+int main() {
+    int n = 10, firstTerm = 0, secondTerm = 1, nextTerm;
+ printf("goutham 192311169");
+    printf("Fibonacci Series up to %d terms:\n", n);
+
+    for (int i = 1; i <= n; ++i) {
+        printf("%d, ", firstTerm);
+        nextTerm = firstTerm + secondTerm;
+        firstTerm = secondTerm;
+        secondTerm = nextTerm;
+    }
+
+    return 0;
+}
