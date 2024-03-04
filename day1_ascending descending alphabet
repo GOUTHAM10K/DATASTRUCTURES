@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main() {
+  printf("reg no: 192311169 \n");
+    char ascending[26];
+    char descending[26];
+    
+    for (int i = 0; i < 26; i++) {
+        ascending[i] = 'A' + i;
+        descending[i] = 'Z' - i;
+    }
+    
+    printf("Ascending Alphabet Array: ");
+    for (int i = 0; i < 26; i++) {
+        printf("%c ", ascending[i]);
+    }
+    
+    printf("\nDescending Alphabet Array: ");
+    for (int i = 0; i < 26; i++) {
+        printf("%c ", descending[i]);
+    }
+    
+    return 0;
+}
