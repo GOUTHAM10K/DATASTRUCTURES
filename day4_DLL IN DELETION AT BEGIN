@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+    struct Node* prev;
+};
+
+void deleteAtBeginning(struct Node** head_ref) {
+    if (*head_ref == NULL) {
+        printf("List is empty. Deletion not possible.\n");
+        return;
+    }
+
+    struct Node* temp = *head_ref;
+    *head_ref = temp->next;
+    (*head_ref)->prev = NULL;
+    free(temp);
+}
+
+// Other functions and main method for testing
+
+int main() {
+  printf("reg no:192311169");
+    struct Node* head = NULL;
+    // Add nodes to the list
+
+    deleteAtBeginning(&head);
+    // Display the list after deletion
+
+    return 0;
+}
