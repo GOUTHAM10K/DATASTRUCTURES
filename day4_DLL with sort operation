@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* prev;
+    struct Node* next;
+};
+
+void insert(struct Node** head_ref, int new_data);
+void sort(struct Node** head_ref);
+void printList(struct Node* node);
+
+int main() {
+    struct Node* head = NULL;
+
+    insert(&head, 5);
+    insert(&head, 10);
+    insert(&head, 2);
+    insert(&head, 8);
+
+    printf("Doubly Linked List before sorting:\n");
+    printList(head);
+
+    sort(&head);
+
+    printf("\nDoubly Linked List after sorting:\n");
+    printList(head);
+
+    return 0;
+}
+
+void insert(struct Node** head_ref, int new_data) {
+    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+    new_node->data = new_data;
+    new_node->prev = NULL;
+    new_node->next = (*head_ref);
+
+    if ((*head_ref) != NULL) {
+        (*head_ref)->prev = new_node;
+    }
+
+    (*head_ref) = new_node;
+}
+
+void sort(struct Node** head_ref) {
+    struct Node* current = *head_ref;
+    struct Node* index = NULL;
+    int temp;
+
+    if (*head_ref == NULL) {
+        return;
+    }
+    
+    while (current != NULL) {
+        index = current->next;
+
+        while (index != NULL) {
+            if (current->data > index->data) {
+                temp = current->data;
+                current->data = index->data;
+                index->data = temp;
+            }
+
+            index = index->next;
+        }
+
+        current = current->next;
+    }
+}
+
+void printList(struct Node* node) {
+    struct Node* last;
+    printf("\nForward Traversal using next pointer:\n");
+    while (node != NULL) {
+        printf("%d ", node->data);
+        last = node;
+        node = node->next;
+    }
+
+    printf("\nBackward Traversal using prev pointer:\n");
+    while (last != NULL) {
+        printf("%d ", last->data);
+        last = last->prev;
+    }
+}
